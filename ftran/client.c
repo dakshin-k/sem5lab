@@ -61,7 +61,8 @@ write(file,buff,strlen(buff));
 while(1)
 {
    //read from socket & write to file -- unless string is "\0"
-   read(sockfd,buff,sizeof(buff));
+   n=read(sockfd,buff,sizeof(buff));
+   buff[n]='\0';
    write(sockfd,buff,1);
    printf("buffer= %s",buff);
    if(!strcmp(buff,"\0"))

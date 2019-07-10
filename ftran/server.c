@@ -42,10 +42,13 @@ int main(int argc,char **argv)
                        close(newfd);
                        continue;
                 }
-                while(read(filefd,buff,sizeof(buff))!=0)
+                while(1)
                 {
+                    n=read(filefd,buff,sizeof(buff));
+                    if(n==0) break;
+                    buff[n]='\0';
                     printf("%s",buff);
-                    write(newfd,buff,sizeof(buff));
+                    write(newfd,buff,strlen(buff));
                     read(newfd,buff,1);
                 }
                 // inform client that file is over

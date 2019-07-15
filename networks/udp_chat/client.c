@@ -19,7 +19,7 @@ char buff[1024];
 sockfd=socket(AF_INET,SOCK_DGRAM,0);
 if(sockfd<0)
 perror("cannot create socket");
-bzero(&servaddr,sizeof(servaddr));
+memset(&servaddr, 0, sizeof(servaddr)); 
 servaddr.sin_family=AF_INET;
 servaddr.sin_addr.s_addr=inet_addr("127.0.0.1");
 servaddr.sin_port=htons(6666);

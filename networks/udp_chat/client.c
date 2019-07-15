@@ -21,7 +21,7 @@ if(sockfd<0)
 perror("cannot create socket");
 memset(&servaddr, 0, sizeof(servaddr)); 
 servaddr.sin_family=AF_INET;
-servaddr.sin_addr.s_addr=inet_addr("127.0.0.1");
+servaddr.sin_addr.s_addr=inet_addr("192.168.43.140");
 servaddr.sin_port=htons(6666);
 r=connect(sockfd,(struct sockaddr*)&servaddr,sizeof(servaddr));
 if(r==-1)

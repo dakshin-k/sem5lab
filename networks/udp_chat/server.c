@@ -8,6 +8,7 @@
 #include<netinet/in.h>
 #include<string.h>
 #include<stdlib.h>
+#include<errno.h>
 
 int main(int argc,char **argv)
 {
@@ -25,9 +26,17 @@ int main(int argc,char **argv)
         servaddr.sin_port=htons(atoi(argv[1]));
         if(bind(sockfd,(struct sockaddr*)&servaddr,sizeof(servaddr))<0)
         perror("Bind error");
-    	n=recvfrom(sockfd,buff,sizeof(buff),MSG_WAITALL,(struct sockaddr *)&cliaddr,&len);
+    	n=recvfrom(sockfd,buff,sizeof(buff),MSG_WAITALL,NULL,NULL);
     	buff[n]='\0';
-    	printf("Recieved %s from %s\n", buff,(char*)inet_ntoa(cliaddr.sin_addr));
+    	printf("Recieved %s\n", buff);
+    	printf("Enter message: ");// github.com/dakshin-k/sem5lab.git
+    	scanf(" %s",buff);
+        n=sendto(sockfd, (const char *)buff, strlen(buff),  
+        MSG_WAITALL, (const struct sockaddr *) &cliaddr, 
+            len); 
+         
+    	if(n==-1)
+    	   printf("errno = %d\n",errno);
         close(sockfd);
         return 0;
 }

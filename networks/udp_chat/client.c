@@ -1,40 +1,43 @@
-#include<stdlib.h>
-#include<unistd.h>
-#include<stdio.h>
-#include<sys/types.h>
-#include<sys/socket.h>
-#include<netinet/in.h>
-#include<string.h>
-#include <arpa/inet.h>
-#include<errno.h>
-#include<sys/stat.h>
-#include<fcntl.h>
-int main(int argc,char **argv)
-{
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <unistd.h> 
+#include <string.h> 
+#include <sys/types.h> 
+#include <sys/socket.h> 
+#include <arpa/inet.h> 
+#include <netinet/in.h> 
 
-int len,r;
-int sockfd,n;
-struct sockaddr_in servaddr,cliaddr;
-char buff[1024];
-sockfd=socket(AF_INET,SOCK_DGRAM,0);
-if(sockfd<0)
-perror("cannot create socket");
-memset(&servaddr, 0, sizeof(servaddr)); 
-servaddr.sin_family=AF_INET;
-servaddr.sin_addr.s_addr=inet_addr("127.0.0.1");
-servaddr.sin_port=htons(6666);
-r=connect(sockfd,(struct sockaddr*)&servaddr,sizeof(servaddr));
-if(r==-1)
-{
-   printf("Connect returned %d\n",r);
-   printf("Errorno = %d\n",errno);
-   return 0;
-}
-//send the file name
-write(sockfd,"bitch",5);
-read(sockfd,buff,sizeof(buff));
-printf("Received %s\n",buff);
-close(sockfd);
-return 0;
+int main() { 
+	int sockfd; 
+	char buff[1000]; 
+	struct sockaddr_in	 servaddr; 
 
-}
+	// Creating socket file descriptor 
+	if ( (sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0 ) { 
+		perror("socket creation failed"); 
+		exit(EXIT_FAILURE); 
+	} 
+
+	memset(&servaddr, 0, sizeof(servaddr)); 
+	
+	// Filling server information 
+	servaddr.sin_family = AF_INET; 
+	servaddr.sin_port = htons(6666); 
+	servaddr.sin_addr.s_addr = INADDR_ANY; 
+	
+	int n, len; 
+	printf("Enter message: ");
+	scanf(" %s",buff);
+	sendto(sockfd, buff, strlen(buff), 
+		MSG_CONFIRM, (const struct sockaddr *) &servaddr, 
+			sizeof(servaddr)); 
+	printf("message sent.\n"); 
+		
+	n = recvfrom(sockfd, (char *)buff, sizeof(buff), MSG_WAITALL, (struct sockaddr *) &servaddr, &len); 
+	buff[n] = '\0'; 
+	printf("Received %s\n", buff); 
+
+	close(sockfd); 
+	return 0; 
+} 
+

@@ -22,8 +22,8 @@ int main() {
 	
 	// Filling server information 
 	servaddr.sin_family = AF_INET; 
-	servaddr.sin_port = htons(6666); 
-	servaddr.sin_addr.s_addr = INADDR_ANY; 
+	servaddr.sin_port = htons(1030); 
+	servaddr.sin_addr.s_addr = inet_addr("10.6.12.9"); 
 	
 	int n, len; 
 	printf("Enter message: ");

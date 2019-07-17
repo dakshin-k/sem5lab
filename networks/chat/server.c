@@ -24,6 +24,8 @@ if(bind(sockfd,(struct sockaddr*)&servaddr,sizeof(servaddr))<0)
 perror("Bind error");
 
 listen(sockfd,4);
+fork();
+fork(); //created 4 threads total
 for(int i=0;i<3;i++)
 {
 len=sizeof(cliaddr);
@@ -32,8 +34,11 @@ newfd=accept(sockfd,(struct sockaddr*)&cliaddr,&len);
 printf("Connected");
 //Receiving the message
 n=read(newfd,buff,sizeof(buff));
-write(newfd,buff,sizeof(buff));
+buff[n]='\0';
 printf("\nReceived Message is \t%s",buff);
+printf("Enter message: ");
+scanf(" %s",buff);
+n=write(newfd,buff,strlen(buff));
 close(newfd);
 }
 close(sockfd);

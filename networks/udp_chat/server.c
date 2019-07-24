@@ -10,7 +10,8 @@
 int main() { 
 	int sockfd; 
 	char buff[1000]; 
-	struct sockaddr_in servaddr, cliaddr; 
+	struct sockaddr_in servaddr;
+	struct sockaddr_in cliaddr; 
 	
 	// Creating socket file descriptor 
 	if ( (sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0 ) { 
@@ -40,11 +41,11 @@ int main() {
 		while(1)
 		{
 			int n, len; 
-			n = recvfrom(sockfd, (char *)buff, sizeof(buff), MSG_DONTWAIT, (struct sockaddr *) &servaddr, &len); 
+			n = recvfrom(sockfd, (char *)buff, sizeof(buff), MSG_DONTWAIT, (struct sockaddr *) &cliaddr, &len); 
 			if(n==-1)
 				continue;
 			buff[n] = '\0'; 
-			printf("%s\n", buff); 
+			printf("Received %s\n", buff); 
 		}
 	}
 	else
@@ -53,8 +54,8 @@ int main() {
 		{		
 			scanf(" %s",buff);
 			sendto(sockfd, buff, strlen(buff), 
-				MSG_DONTWAIT, (const struct sockaddr *) &servaddr, 
-				sizeof(servaddr)); 
+				MSG_CONFIRM, (const struct sockaddr *) &cliaddr, 
+				sizeof(cliaddr)); 
 		}
 	}
 	

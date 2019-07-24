@@ -35,16 +35,28 @@ int main() {
 	} 
 	
 	int len, n; 
-	n = recvfrom(sockfd, buff, sizeof(buff), 
-				MSG_WAITALL, ( struct sockaddr *) &cliaddr, 
-				&len); 
-	buff[n] = '\0'; 
-	printf("Received %s\n", buff); 
-	strcpy(buff,"reply");
-	sendto(sockfd, buff, strlen(buff), 
-		MSG_CONFIRM, (const struct sockaddr *) &cliaddr, 
-			len); 
-	printf("message sent.\n"); 
+	if(fork()==0)
+	{
+		while(1)
+		{
+			int n, len; 
+			n = recvfrom(sockfd, (char *)buff, sizeof(buff), MSG_DONTWAIT, (struct sockaddr *) &servaddr, &len); 
+			if(n==-1)
+				continue;
+			buff[n] = '\0'; 
+			printf("%s\n", buff); 
+		}
+	}
+	else
+	{
+		while(1)
+		{		
+			scanf(" %s",buff);
+			sendto(sockfd, buff, strlen(buff), 
+				MSG_DONTWAIT, (const struct sockaddr *) &servaddr, 
+				sizeof(servaddr)); 
+		}
+	}
 	
 	return 0; 
 } 

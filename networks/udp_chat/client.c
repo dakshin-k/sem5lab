@@ -22,21 +22,30 @@ int main() {
 	
 	// Filling server information 
 	servaddr.sin_family = AF_INET; 
-	servaddr.sin_port = htons(1030); 
-	servaddr.sin_addr.s_addr = inet_addr("10.6.12.9"); 
-	
-	int n, len; 
-	printf("Enter message: ");
-	scanf(" %s",buff);
-	sendto(sockfd, buff, strlen(buff), 
-		MSG_CONFIRM, (const struct sockaddr *) &servaddr, 
-			sizeof(servaddr)); 
-	printf("message sent.\n"); 
-		
-	n = recvfrom(sockfd, (char *)buff, sizeof(buff), MSG_WAITALL, (struct sockaddr *) &servaddr, &len); 
-	buff[n] = '\0'; 
-	printf("Received %s\n", buff); 
-
+	servaddr.sin_port = htons(1029); 
+	servaddr.sin_addr.s_addr = inet_addr("127.0.0.1"); 
+	if(fork()==0)
+	{
+		while(1)
+		{
+			int n, len; 
+			n = recvfrom(sockfd, (char *)buff, sizeof(buff), MSG_DONTWAIT, (struct sockaddr *) &servaddr, &len); 
+			if(n==-1)
+				continue;
+			buff[n] = '\0'; 
+			printf("%s\n", buff); 
+		}
+	}
+	else
+	{
+		while(1)
+		{		
+			scanf(" %s",buff);
+			sendto(sockfd, buff, strlen(buff), 
+				MSG_DONTWAIT, (const struct sockaddr *) &servaddr, 
+					sizeof(servaddr)); 
+		}
+	}
 	close(sockfd); 
 	return 0; 
 } 

@@ -29,7 +29,7 @@ int main() {
 		while(1)
 		{
 			int n, len; 
-			n = recvfrom(sockfd, (char *)buff, sizeof(buff), MSG_DONTWAIT, (struct sockaddr *) &servaddr, &len); 
+			n = recvfrom(sockfd, (char *)buff, sizeof(buff), MSG_WAITALL, (struct sockaddr *) &servaddr, &len); 
 			if(n==-1)
 				continue;
 			buff[n] = '\0'; 

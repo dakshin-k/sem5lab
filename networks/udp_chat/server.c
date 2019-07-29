@@ -7,11 +7,26 @@
 #include <sys/socket.h> 
 #include <arpa/inet.h> 
 #include <netinet/in.h> 
+#include <pthread.h>
+struct sockaddr_in cliaddr; 
+int len,sockfd;
+char buff[1000]; 
+void* recvthread(void *p)
+{
+	while(1)
+	{
+		int n, len; 
+		n = recvfrom(sockfd, (char *)buff, sizeof(buff), MSG_WAITALL, (struct sockaddr *) &cliaddr, &len); 
+		if(n==-1)
+			continue;
+		buff[n] = '\0'; 
+		printf("Received %s\n", buff); 
+	}
+	pthread_exit(0);
+}
 int main() { 
-	int sockfd; 
-	char buff[1000]; 
+	
 	struct sockaddr_in servaddr;
-	struct sockaddr_in cliaddr; 
 	
 	// Creating socket file descriptor 
 	if ( (sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0 ) { 
@@ -34,21 +49,10 @@ int main() {
 		perror("bind failed"); 
 		exit(EXIT_FAILURE); 
 	} 
-	
-	int len, n; 
-	if(fork()==0)
-	{
-		while(1)
-		{
-			int n, len; 
-			n = recvfrom(sockfd, (char *)buff, sizeof(buff), MSG_DONTWAIT, (struct sockaddr *) &cliaddr, &len); 
-			if(n==-1)
-				continue;
-			buff[n] = '\0'; 
-			printf("Received %s\n", buff); 
-		}
-	}
-	else
+	pthread_t pid;
+	pthread_attr_t attr;
+	pthread_attr_init(&attr);
+	pthread_create(&pid,&attr,recvthread,NULL);
 	{
 		while(1)
 		{		
@@ -58,7 +62,7 @@ int main() {
 				sizeof(cliaddr)); 
 		}
 	}
-	
+	pthread_join(pid,NULL);
 	return 0; 
 } 
 

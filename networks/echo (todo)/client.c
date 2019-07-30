@@ -27,13 +27,13 @@ servaddr.sin_port=htons(atoi(argv[2]));
 r=connect(sockfd,(struct sockaddr*)&servaddr,sizeof(servaddr));
 if(r==-1)
   printf("Errorno = %d\n",errno);
-printf("Connect returned %d\n",r);
+
 //Sending Message
-printf("Enter the message");
+printf("Enter the message: ");
 scanf("%s",buff);
 n=send(sockfd,buff,sizeof(buff),0);
 n=recv(sockfd,buff1,sizeof(buff),0);
-printf("\nReceived Message is \t%s",buff1);
+printf("\nReceived Message is \t%s\n",buff1);
 close(sockfd);
 return 0;
 }

@@ -33,7 +33,7 @@ printf("Connected");
 //Receiving the message
 n=read(newfd,buff,sizeof(buff));
 write(newfd,buff,sizeof(buff));
-printf("\nReceived Message is \t%s",buff);
+printf("\nReceived Message is \t%s\n",buff);
 close(newfd);
 }
 close(sockfd);

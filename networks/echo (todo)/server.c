@@ -32,6 +32,8 @@ while(1)
 {
 	//Receiving the message
 	n=read(newfd,buff,sizeof(buff));
+	if(!strcmp(buff,"/quit"))
+		break;
 	write(newfd,buff,sizeof(buff));
 	printf("\nReceived Message is \t%s\n",buff);
 }

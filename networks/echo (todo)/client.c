@@ -34,7 +34,10 @@ while(1)
 	printf("Enter the message (q to quit): ");
 	scanf(" %[^\n]s",buff);
 	if(!strcmp(buff,"q"))
+	{
+		send(sockfd,"/quit",sizeof("/quit"),0);
 		break;
+	}	
 	n=send(sockfd,buff,sizeof(buff),0);
 	n=recv(sockfd,buff1,sizeof(buff),0);
 	printf("\nReceived Message is \t%s\n",buff1);

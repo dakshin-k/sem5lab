@@ -23,19 +23,19 @@ servaddr.sin_port=htons(atoi(argv[1]));
 if(bind(sockfd,(struct sockaddr*)&servaddr,sizeof(servaddr))<0)
 perror("Bind error");
 
-listen(sockfd,4);
-for(int i=0;i<3;i++)
-{
+listen(sockfd,1);
 len=sizeof(cliaddr);
 printf("Waiting for connection\n");
 newfd=accept(sockfd,(struct sockaddr*)&cliaddr,&len);
 printf("Connected");
-//Receiving the message
-n=read(newfd,buff,sizeof(buff));
-write(newfd,buff,sizeof(buff));
-printf("\nReceived Message is \t%s\n",buff);
-close(newfd);
+while(1)
+{
+	//Receiving the message
+	n=read(newfd,buff,sizeof(buff));
+	write(newfd,buff,sizeof(buff));
+	printf("\nReceived Message is \t%s\n",buff);
 }
+close(newfd);
 close(sockfd);
 return 0;
 }

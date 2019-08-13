@@ -28,12 +28,17 @@ r=connect(sockfd,(struct sockaddr*)&servaddr,sizeof(servaddr));
 if(r==-1)
   printf("Errorno = %d\n",errno);
 
-//Sending Message
-printf("Enter the message: ");
-scanf("%s",buff);
-n=send(sockfd,buff,sizeof(buff),0);
-n=recv(sockfd,buff1,sizeof(buff),0);
-printf("\nReceived Message is \t%s\n",buff1);
+while(1)
+{
+	//Sending Message
+	printf("Enter the message (q to quit): ");
+	scanf(" %[^\n]s",buff);
+	if(!strcmp(buff,"q"))
+		break;
+	n=send(sockfd,buff,sizeof(buff),0);
+	n=recv(sockfd,buff1,sizeof(buff),0);
+	printf("\nReceived Message is \t%s\n",buff1);
+}
 close(sockfd);
 return 0;
 }

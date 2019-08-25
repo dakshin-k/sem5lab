@@ -8,19 +8,14 @@
 #include <arpa/inet.h> 
 #include <netinet/in.h> 
 
-#define PORT	 1029 
+#define PORT	 8080 
 #define MAXLINE 1024 
+
+// Driver code 
 int main() { 
 	int sockfd; 
 	char buffer[MAXLINE]; 
-	char cip[20];
-	char cmac[20];
-	printf("Enter the IP address: ");
-	scanf(" %s",cip);
-	printf("Enter the MAC address: ");
-	scanf(" %s",cmac);
-	char ans[100];
-
+	char *hello = "Hello from server"; 
 	struct sockaddr_in servaddr, cliaddr; 
 	
 	// Creating socket file descriptor 
@@ -50,29 +45,11 @@ int main() {
 				MSG_WAITALL, ( struct sockaddr *) &cliaddr, 
 				&len); 
 	buffer[n] = '\0'; 
-	printf("ARP request receieved: %s\n", buffer); 
-	char c[100];
-	strcpy(c,buffer);
-	char *tok=strtok(c,"|");
-	// printf("%s\n", buffer);
-	if(!strcmp(tok,cip))
-	{
-		//arp request was meant for you
-		printf("IP address matches\n");
-
-		sprintf(buffer,"%s|%s",buffer,cmac);
-		//send this value out
-		strcpy(ans,buffer);
-		//printf("\n%s: len=%d\n", ans,strlen(ans));		
-		n=sendto(sockfd, (const char *)ans, strlen(ans), 
-		MSG_CONFIRM, (const struct sockaddr *) &cliaddr, len);
-		if (n==-1)
-			perror("sendto failed"); 
-		printf("ARP reply sent: %s\n",ans); 
-	}
-	else
-		printf("IP address does not match.\n");
-	
+	printf("Client : %s\n", buffer); 
+	sendto(sockfd, (const char *)hello, strlen(hello), 
+		MSG_CONFIRM, (const struct sockaddr *) &cliaddr, 
+			len); 
+	printf("Hello message sent.\n"); 
 	
 	return 0; 
 } 

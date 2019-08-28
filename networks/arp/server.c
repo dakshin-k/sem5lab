@@ -101,7 +101,7 @@ int main() {
 			sizeof(servaddr)); 
 	if(n==-1)
 		perror("RARP sendto failed");
-	else printf("%d\n", n);
+	
 	close(sockfd); 
 	return 0; 
 } 

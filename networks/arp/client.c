@@ -15,10 +15,12 @@ int main() {
 	char buffer[MAXLINE]; 
 	char cip[20];
 	char cmac[20];
+	char smac[20];
 	printf("Enter the IP address: ");
 	scanf(" %s",cip);
 	printf("Enter the MAC address: ");
 	scanf(" %s",cmac);
+
 	char ans[100];
 
 	struct sockaddr_in servaddr, cliaddr; 
@@ -73,6 +75,21 @@ int main() {
 	else
 		printf("IP address does not match.\n");
 	
-	
+	//start of RARP
+	printf("Enter the server MAC address: ");
+	scanf(" %s",smac);
+	sprintf(buffer,"RARP|%s|%s",smac,cmac);
+	n=sendto(sockfd, (const char *)buffer, strlen(buffer), 
+		MSG_CONFIRM, (const struct sockaddr *) &cliaddr, 
+			sizeof(cliaddr)); 
+		if (n==-1)
+			perror("sendto failed"); 
+	printf("RARP request sent\n");
+	printf("Waiting for reply...\n");
+	n = recvfrom(sockfd, (char *)buffer, MAXLINE, 
+				MSG_WAITALL, ( struct sockaddr *) &cliaddr, 
+				&len); 
+	buffer[n] = '\0'; 
+	printf("RARP reply received: %s\n", buffer);
 	return 0; 
 } 

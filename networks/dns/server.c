@@ -12,6 +12,7 @@
 #define MAXLINE 1024 
 
 char table[10][25][25];
+char* find(char *host);
 int nt=1;
 void fill()
 {
@@ -28,11 +29,48 @@ void disp()
 }
 void modify()
 {
-	char d[20],ip[20];
+	char d[20],ip[20],t[20];
 	printf("Domain name: ");
 	scanf(" %s",d);
-	printf("IP address: ");
-	scanf(" %s",ip);
+	
+	for(;;) // repeat until input ip is valid and unique
+	{
+		printf("Enter valid IP address: ");
+		scanf(" %s",ip);	
+		int flag=0;
+
+		//check for valid ip address -> all of the 4 numbers must be <= 255
+		strcpy(t,ip); 
+		char *tok=strtok(t,".");
+		while(tok!=NULL)
+		{
+			if(atoi(tok)>255)
+				flag=1;
+			tok=strtok(NULL,".");
+		}
+		if(flag)
+		{
+			printf("Invalid IP address!\n");
+			continue;
+		}
+
+		//now check if ip is already in the table
+		for (int i = 0; i < nt; ++i)
+		{
+			if(!strcmp(ip,table[i][1]))
+				flag=1;
+		}
+		if(flag)
+		{
+			printf("IP address already exists\n");
+			continue;
+		}
+		strcpy(table[nt][0],d);
+		strcpy(table[nt++][1],ip);
+		break;
+	}
+	printf("Updated table is \n");
+	disp();
 }
 // Driver code 
 int main() { 
@@ -47,7 +85,7 @@ int main() {
 
 	int sockfd; 
 	char buffer[MAXLINE]; 
-	char *hello = "Hello from server"; 
+	// char *hello = "Hello from server"; 
 	struct sockaddr_in servaddr, cliaddr; 
 	
 	// Creating socket file descriptor 
@@ -73,15 +111,31 @@ int main() {
 	} 
 	
 	int len, n; 
-	n = recvfrom(sockfd, (char *)buffer, MAXLINE, 
-				MSG_WAITALL, ( struct sockaddr *) &cliaddr, 
-				&len); 
-	buffer[n] = '\0'; 
-	printf("Client : %s\n", buffer); 
-	sendto(sockfd, (const char *)hello, strlen(hello), 
-		MSG_CONFIRM, (const struct sockaddr *) &cliaddr, 
-			len); 
-	printf("Hello message sent.\n"); 
+	for(;;){
+		n = recvfrom(sockfd, (char *)buffer, MAXLINE, 
+					MSG_WAITALL, ( struct sockaddr *) &cliaddr, 
+					&len); 
+		buffer[n] = '\0'; 
+		char *ans=find(buffer);
+		sendto(sockfd, (const char *)ans, strlen(ans), 
+			MSG_CONFIRM, (const struct sockaddr *) &cliaddr, 
+				len); 
+	}
 	
 	return 0; 
 } 
+
+
+char *find(char host[]){
+	//linear search thru table
+	int i;
+	for (i = 0; i < nt; ++i)
+	{
+		if(!strcmp(host,table[i][0]))
+			break;
+	}
+	if(i==nt)
+		return "(Not found)";
+	return table[i][1];
+
+}

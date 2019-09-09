@@ -16,7 +16,6 @@
 int main() { 
 	int sockfd; 
 	char buffer[MAXLINE]; 
-	char *hello = "Hello from client"; 
 	struct sockaddr_in	 servaddr; 
 
 	// Creating socket file descriptor 
@@ -34,16 +33,20 @@ int main() {
 	
 	int n, len; 
 	
-	sendto(sockfd, (const char *)hello, strlen(hello), 
+	printf("Enter the server name: ");
+	scanf(" %s",buffer);
+	sendto(sockfd, (const char *)buffer, strlen(buffer), 
 		MSG_CONFIRM, (const struct sockaddr *) &servaddr, 
 			sizeof(servaddr)); 
-	printf("Hello message sent.\n"); 
 		
 	n = recvfrom(sockfd, (char *)buffer, MAXLINE, 
 				MSG_WAITALL, (struct sockaddr *) &servaddr, 
 				&len); 
 	buffer[n] = '\0'; 
-	printf("Server : %s\n", buffer); 
+	if(!strcmp(buffer,"(Not found)"))
+		printf("Could not find IP address\n");
+	else
+		printf("The IP address is : %s\n", buffer); 
 
 	close(sockfd); 
 	return 0; 

@@ -1,3 +1,3 @@
-gcc client.c -o c -lpthread
-gcc server.c -o s -lpthread
+gcc mclient.c -o c -lpthread
+gcc mserver.c -o s -lpthread
 echo done

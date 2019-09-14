@@ -7,7 +7,8 @@
 #include <sys/socket.h> 
 #include <arpa/inet.h> 
 #include <netinet/in.h> 
-
+#include<netdb.h>
+extern int h_errno;
 #define PORT	 8080 
 #define MAXLINE 1024 
 
@@ -135,7 +136,25 @@ char *find(char host[]){
 			break;
 	}
 	if(i==nt)
-		return "(Not found)";
+	{
+		//gethostbyname
+		struct hostent *h=gethostbyname(host);
+		if(h==NULL)
+			return "(Not found)";
+		char ip[30];
+	    struct sockaddr_in address;
+	    address.sin_addr = *((struct in_addr*) h->h_addr);
+	    inet_ntop(AF_INET, &address.sin_addr, ip, sizeof(ip));
+	    
+	    //add this entry to our table
+	    strcpy(table[nt][0],host);
+	    strcpy(table[nt++][1],ip);
+
+	    //display the new table
+	    printf("Contents of table: \n");
+	    disp();
+	    return table[nt-1][1];
+	}
 	return table[i][1];
 
 }

@@ -1,21 +1,9 @@
 package shopping;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.sql.Blob;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import shopping.ui.HintTextField;
+import shopping.ui.HintTextArea;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,20 +20,11 @@ public class NewProduct extends javax.swing.JFrame {
     /**
      * Creates new form ImagePage
      */
-    Connection conn;
+  
 
     public NewProduct() {
         initComponents();
-        
-         try{
-        //Class.forName("oracle.jdbc.OracleDriver");
-        conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hr", "ssn");
-        System.out.println("connected");
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
+     
        
     }
 
@@ -59,14 +38,14 @@ public class NewProduct extends javax.swing.JFrame {
     private void initComponents() {
 
         ImageButton = new javax.swing.JButton();
-        ImageTF = new javax.swing.JTextField();
-        ImgShowTF = new javax.swing.JTextField();
+        imgname = new javax.swing.JTextField();
+        name = new HintTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        desc = new HintTextArea();
+        sdesc = new HintTextField();
+        price = new HintTextField();
+        quantity = new HintTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -79,28 +58,29 @@ public class NewProduct extends javax.swing.JFrame {
             }
         });
 
-        ImageTF.setText("Enter image name");
+        imgname.setEditable(false);
+        imgname.setText("Enter image name");
 
-        ImgShowTF.setText("Enter product name");
-        ImgShowTF.addActionListener(new java.awt.event.ActionListener() {
+        name.setHint("Enter product name");
+        name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ImgShowTFActionPerformed(evt);
+                nameActionPerformed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("New Products Entry");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Enter additional details");
-        jScrollPane1.setViewportView(jTextArea1);
+        desc.setColumns(20);
+        desc.setRows(5);
+        desc.setHint("Enter additional details");
+        jScrollPane1.setViewportView(desc);
 
-        jTextField1.setText("Enter short description");
+        sdesc.setHint("Enter short description");
 
-        jTextField2.setText("Enter price/unit");
+        price.setHint("Enter price/unit");
 
-        jTextField3.setText("Enter quantity");
+        quantity.setHint("Enter quantity");
 
         jButton1.setText("Submit");
 
@@ -124,20 +104,20 @@ public class NewProduct extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(67, 67, 67))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ImageTF, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imgname, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53)
                         .addComponent(ImageButton)
                         .addContainerGap(58, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1)
-                            .addComponent(ImgShowTF)
+                            .addComponent(name)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1))
+                            .addComponent(sdesc))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -147,17 +127,17 @@ public class NewProduct extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ImageButton)
-                    .addComponent(ImageTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(imgname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(ImgShowTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sdesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -169,34 +149,27 @@ public class NewProduct extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImageButtonActionPerformed
-        try {
-            // TODO add your handling code here:
-
-            PreparedStatement ps=conn.prepareStatement("insert into imgtable values(?,?)");
-            ps.setString(1, ImageTF.getText());
-            
-            FileInputStream fin = new FileInputStream("H:\\"+ImageTF.getText()+".jpg");
-            ps.setBinaryStream(2, fin,fin.available());
-            int i=ps.executeUpdate();
-            JOptionPane.showMessageDialog(this, i+" records affected");
-            
-            
-            
-            
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(NewProduct.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(NewProduct.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(NewProduct.class.getName()).log(Level.SEVERE, null, ex);
+        
+        // TODO add your handling code here:
+        JFileChooser j=new JFileChooser();
+        int r=j.showOpenDialog(null);
+        if(r==JFileChooser.APPROVE_OPTION)
+        {
+            String name=j.getSelectedFile().getName();
+            if(!(name.contains(".jpg")||name.contains(".png")||name.contains(".jpeg")))
+            {
+                JOptionPane.showMessageDialog(null, "Select an image file");
+                return;
+            }
+            imgname.setText(name);
         }
+
         
     }//GEN-LAST:event_ImageButtonActionPerformed
 
-    private void ImgShowTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImgShowTFActionPerformed
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ImgShowTFActionPerformed
+    }//GEN-LAST:event_nameActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -240,15 +213,15 @@ public class NewProduct extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ImageButton;
-    private javax.swing.JTextField ImageTF;
-    private javax.swing.JTextField ImgShowTF;
+    private HintTextArea desc;
+    private javax.swing.JTextField imgname;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private HintTextField name;
+    private HintTextField price;
+    private HintTextField quantity;
+    private HintTextField sdesc;
     // End of variables declaration//GEN-END:variables
 }

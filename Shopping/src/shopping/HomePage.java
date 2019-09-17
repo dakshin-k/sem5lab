@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import shopping.metadata.Login;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -27,12 +28,11 @@ public class HomePage extends javax.swing.JFrame {
      * Creates new form HomePage
      */
     Connection conn;
-    String itemid;
-    String custname;
+    Login login;
 
-    public HomePage(String text) {
+    public HomePage(Login login) {
         initComponents();
-        custname=text;
+        this.login=login;
         TitleLabel.setBackground(Color.BLUE);
       
        
@@ -271,7 +271,7 @@ public class HomePage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomePage("Cus Name here").setVisible(true);
+                new HomePage(null).setVisible(true);
             }
         });
     }

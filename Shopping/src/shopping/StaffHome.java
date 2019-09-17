@@ -5,17 +5,20 @@
  */
 package shopping;
 
+import shopping.metadata.Login;
+
 /**
  *
  * @author Dakshin
  */
 public class StaffHome extends javax.swing.JFrame {
-
+    private Login login;
     /**
      * Creates new form StaffHome
      */
-    public StaffHome() {
+    public StaffHome(Login login) {
         initComponents();
+        this.login=login;
     }
 
     /**
@@ -326,7 +329,7 @@ public class StaffHome extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StaffHome().setVisible(true);
+                new StaffHome(null).setVisible(true);
             }
         });
     }

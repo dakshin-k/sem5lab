@@ -214,7 +214,7 @@ public class LoginPage extends javax.swing.JFrame {
 
     private void SignupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignupButtonActionPerformed
         // TODO add your handling code here:
-        
+        new SignupNewCustomer(username.getText(),String.valueOf(pwd.getPassword())).setVisible(true);
         
     }//GEN-LAST:event_SignupButtonActionPerformed
 

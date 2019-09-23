@@ -21,6 +21,10 @@ import shopping.metadata.Login;
  */
 public class DataBase {
     static Connection conn;
+     public static String insert(String sql,String... arg)
+    {
+        return execute(prepareStatement(sql,arg));
+    }
     public static void connect()
     {
         if(conn!=null) return;
@@ -105,21 +109,18 @@ public class DataBase {
             return null;
         }
     }
-    public static boolean execute(PreparedStatement ps)
+    public static String execute(PreparedStatement ps)
     {
         try
         {
             ps.execute();
-            return true;
+            return "success";
         } catch(SQLException e)
         {
-            JOptionPane.showMessageDialog(null, "Failed to update records");
+            //JOptionPane.showMessageDialog(null, "Failed to update records");
             Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, e);
-            return false;
+            return e.toString();
         }
     }
-    public static void insert(String sql,String... arg)
-    {
-        execute(prepareStatement(sql,arg));
-    }
+   
 }

@@ -1,16 +1,11 @@
 package shopping;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 import shopping.metadata.Login;
+import shopping.metadata.Product;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,13 +24,30 @@ public class HomePage extends javax.swing.JFrame {
      */
     Connection conn;
     Login login;
-
+    Product[] recommendations;
     public HomePage(Login login) {
         initComponents();
         this.login=login;
         TitleLabel.setBackground(Color.BLUE);
-      
-       
+        welcome.setText("Welcome, "+login.getName());
+        searchbar.setHint("Search for anything...");
+        //todo: make search bar as hint text field
+       recommendations=Recommendations.getRecommendations(login);
+       if(recommendations!=null)
+       {
+           i1.setIcon(new ImageIcon(new ImageIcon(recommendations[0].getImgpath()).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)));
+           i2.setIcon(new ImageIcon(new ImageIcon(recommendations[1].getImgpath()).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)));
+           i3.setIcon(new ImageIcon(new ImageIcon(recommendations[2].getImgpath()).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT)));
+
+           
+           n1.setText(recommendations[0].getName());
+           n2.setText(recommendations[1].getName());
+           n3.setText(recommendations[2].getName());
+           
+           p1.setText(String.valueOf(recommendations[0].getPrice()));
+           p2.setText(String.valueOf(recommendations[1].getPrice()));
+           p3.setText(String.valueOf(recommendations[2].getPrice()));
+       }
     }
 
    
@@ -49,32 +61,25 @@ public class HomePage extends javax.swing.JFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        ItemTF = new javax.swing.JTextField();
         SearchButton = new javax.swing.JButton();
         TitleLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        welcome = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        i1 = new javax.swing.JLabel();
+        i2 = new javax.swing.JLabel();
+        i3 = new javax.swing.JLabel();
+        n1 = new javax.swing.JLabel();
+        n2 = new javax.swing.JLabel();
+        n3 = new javax.swing.JLabel();
+        p1 = new javax.swing.JLabel();
+        p2 = new javax.swing.JLabel();
+        p3 = new javax.swing.JLabel();
+        searchbar = new shopping.ui.HintTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jDesktopPane1.setBackground(new java.awt.Color(240, 240, 240));
-
-        ItemTF.setText("Search for anything...");
-        ItemTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ItemTFActionPerformed(evt);
-            }
-        });
 
         SearchButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         SearchButton.setText("Search");
@@ -90,46 +95,91 @@ public class HomePage extends javax.swing.JFrame {
 
         jButton1.setText("My Account");
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Welcome, {username}");
+        welcome.setForeground(new java.awt.Color(255, 255, 255));
+        welcome.setText("Welcome, {username}");
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Recommended For You:");
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Icon 1");
+        i1.setBackground(new java.awt.Color(255, 255, 255));
+        i1.setText("Icon 1");
+        i1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                i1MouseClicked(evt);
+            }
+        });
 
-        jLabel4.setText("jLabel4");
+        i2.setText("jLabel4");
+        i2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                i2MouseClicked(evt);
+            }
+        });
 
-        jLabel5.setText("jLabel5");
+        i3.setText("jLabel5");
+        i3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                i3MouseClicked(evt);
+            }
+        });
 
-        jLabel6.setText("Name 1");
+        n1.setText("Name 1");
+        n1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                n1MouseClicked(evt);
+            }
+        });
 
-        jLabel7.setText("Name 2");
+        n2.setText("Name 2");
+        n2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                n2MouseClicked(evt);
+            }
+        });
 
-        jLabel8.setText("Name 3");
+        n3.setText("Name 3");
+        n3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                n3MouseClicked(evt);
+            }
+        });
 
-        jLabel9.setText("Price 1");
+        p1.setText("Price 1");
+        p1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                p1MouseClicked(evt);
+            }
+        });
 
-        jLabel10.setText("Price 2");
+        p2.setText("Price 2");
+        p2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                p2MouseClicked(evt);
+            }
+        });
 
-        jLabel11.setText("Price 3");
+        p3.setText("Price 3");
+        p3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                p3MouseClicked(evt);
+            }
+        });
 
-        jDesktopPane1.setLayer(ItemTF, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(SearchButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(TitleLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(welcome, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(i1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(i2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(i3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(n1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(n2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(n3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(p1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(p2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(p3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(searchbar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -137,82 +187,82 @@ public class HomePage extends javax.swing.JFrame {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(i1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(n1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                                .addComponent(p1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ItemTF, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(SearchButton)
-                        .addGap(62, 62, 62))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                         .addGap(51, 51, 51)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addGap(45, 45, 45)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)
                                 .addComponent(jButton1))
                             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(i2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                    .addComponent(n2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(p2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(93, 93, 93)
                                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(i3, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                    .addComponent(n3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(p3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(SearchButton)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TitleLabel)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ItemTF, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SearchButton))
-                        .addGap(1, 1, 1)))
+                            .addComponent(searchbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(SearchButton)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(TitleLabel)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(i3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16)
-                        .addComponent(jLabel8))
+                        .addComponent(n3))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                            .addComponent(i2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(i1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                         .addGap(16, 16, 16)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6))))
+                            .addComponent(n2)
+                            .addComponent(n1))))
                 .addGap(18, 18, 18)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
+                        .addComponent(p3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
-                            .addComponent(jLabel1)))
+                            .addComponent(welcome)))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel9))
+                            .addComponent(p2)
+                            .addComponent(p1))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -227,7 +277,7 @@ public class HomePage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,9 +287,50 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchButtonActionPerformed
 
-    private void ItemTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemTFActionPerformed
+    private void i1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_i1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_ItemTFActionPerformed
+        open(recommendations[0]);
+    }//GEN-LAST:event_i1MouseClicked
+
+    private void n1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_n1MouseClicked
+        // TODO add your handling code here:
+        open(recommendations[0]);
+    }//GEN-LAST:event_n1MouseClicked
+
+    private void p1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p1MouseClicked
+        // TODO add your handling code here:
+        open(recommendations[0]);
+    }//GEN-LAST:event_p1MouseClicked
+
+    private void i2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_i2MouseClicked
+        // TODO add your handling code here:
+        open(recommendations[1]);
+    }//GEN-LAST:event_i2MouseClicked
+
+    private void n2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_n2MouseClicked
+        // TODO add your handling code here:
+        open(recommendations[1]);
+    }//GEN-LAST:event_n2MouseClicked
+
+    private void p2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p2MouseClicked
+        // TODO add your handling code here:
+        open(recommendations[1]);
+    }//GEN-LAST:event_p2MouseClicked
+
+    private void i3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_i3MouseClicked
+        // TODO add your handling code here:
+        open(recommendations[2]);
+    }//GEN-LAST:event_i3MouseClicked
+
+    private void n3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_n3MouseClicked
+        // TODO add your handling code here:
+        open(recommendations[2]);
+    }//GEN-LAST:event_n3MouseClicked
+
+    private void p3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p3MouseClicked
+        // TODO add your handling code here:
+        open(recommendations[2]);
+    }//GEN-LAST:event_p3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -277,21 +368,25 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ItemTF;
     private javax.swing.JButton SearchButton;
     private javax.swing.JLabel TitleLabel;
+    private javax.swing.JLabel i1;
+    private javax.swing.JLabel i2;
+    private javax.swing.JLabel i3;
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel n1;
+    private javax.swing.JLabel n2;
+    private javax.swing.JLabel n3;
+    private javax.swing.JLabel p1;
+    private javax.swing.JLabel p2;
+    private javax.swing.JLabel p3;
+    private shopping.ui.HintTextField searchbar;
+    private javax.swing.JLabel welcome;
     // End of variables declaration//GEN-END:variables
+
+    private void open(Product recommendation) {
+        new ItemDeets(recommendation,login).setVisible(true);
+    }
 }

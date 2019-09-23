@@ -30,7 +30,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jDesktopPane1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="13" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -48,69 +48,70 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="TitleLabel" max="32767" attributes="0"/>
+                      <Component id="jLabel2" pref="132" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="TitleLabel" min="-2" pref="162" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ItemTF" min="-2" pref="220" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="SearchButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel2" min="-2" pref="132" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel3" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jLabel6" alignment="0" pref="99" max="32767" attributes="0"/>
-                                          <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                              <Component id="i1" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="n1" alignment="0" pref="99" max="32767" attributes="0"/>
+                                  <Component id="p1" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" min="-2" pref="146" max="-2" attributes="0"/>
+                                  <Component id="welcome" min="-2" pref="146" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel4" pref="100" max="32767" attributes="0"/>
-                                      <Component id="jLabel7" max="32767" attributes="0"/>
-                                      <Component id="jLabel10" max="32767" attributes="0"/>
+                                      <Component id="i2" pref="100" max="32767" attributes="0"/>
+                                      <Component id="n2" max="32767" attributes="0"/>
+                                      <Component id="p2" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel5" pref="100" max="32767" attributes="0"/>
-                                      <Component id="jLabel8" max="32767" attributes="0"/>
-                                      <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="i3" pref="100" max="32767" attributes="0"/>
+                                      <Component id="n3" max="32767" attributes="0"/>
+                                      <Component id="p3" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="searchbar" min="-2" pref="278" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="SearchButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace pref="22" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="TitleLabel" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ItemTF" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="searchbar" alignment="3" max="32767" attributes="0"/>
                               <Component id="SearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="TitleLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -118,36 +119,36 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jLabel5" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="i3" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                          <Component id="n3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jLabel4" pref="100" max="32767" attributes="0"/>
-                              <Component id="jLabel3" pref="100" max="32767" attributes="0"/>
+                              <Component id="i2" pref="100" max="32767" attributes="0"/>
+                              <Component id="i1" pref="100" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="n2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="n1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                          <Component id="p3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="46" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="welcome" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="p2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="p1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -158,14 +159,6 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="ItemTF">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Search for anything..."/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ItemTFActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="SearchButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -193,7 +186,7 @@
             <Property name="text" type="java.lang.String" value="My Account"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="welcome">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -209,53 +202,82 @@
             <Property name="text" type="java.lang.String" value="Recommended For You:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="i1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Icon 1"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="i1MouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="i2">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel4"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="i2MouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class="javax.swing.JLabel" name="i3">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel5"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="i3MouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="n1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Name 1"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="n1MouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
+        <Component class="javax.swing.JLabel" name="n2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Name 2"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="n2MouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
+        <Component class="javax.swing.JLabel" name="n3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Name 3"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="n3MouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel9">
+        <Component class="javax.swing.JLabel" name="p1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Price 1"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="p1MouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel10">
+        <Component class="javax.swing.JLabel" name="p2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Price 2"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="p2MouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel11">
+        <Component class="javax.swing.JLabel" name="p3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Price 3"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="p3MouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="shopping.ui.HintTextField" name="searchbar">
         </Component>
       </SubComponents>
     </Container>

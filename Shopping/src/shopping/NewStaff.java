@@ -169,7 +169,7 @@ public class NewStaff extends javax.swing.JFrame {
         String insert="insert into users values(?,?,?,null)";
         PreparedStatement ps=DataBase.prepareStatement(insert,
                 username.getText(),"1",String.valueOf(pwd.getPassword()));
-        if(!DataBase.execute(ps))
+        if(!DataBase.execute(ps).equals("success"))
         {    
             JOptionPane.showMessageDialog(null, "Username is already taken.");
             return;

@@ -5,6 +5,9 @@
  */
 package shopping;
 
+import shopping.metadata.Login;
+import shopping.metadata.Product;
+
 /**
  *
  * @author Dakshin
@@ -15,6 +18,13 @@ public class ItemDeets extends javax.swing.JFrame {
      * Creates new form ItemDeets
      */
     public ItemDeets() {
+        initComponents();
+    }
+    Product prod;
+    Login login;
+    ItemDeets(Product recommendation, Login login) {
+        this.prod=recommendation;
+        this.login=login;
         initComponents();
     }
 
@@ -52,6 +62,7 @@ public class ItemDeets extends javax.swing.JFrame {
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 

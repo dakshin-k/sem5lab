@@ -84,6 +84,7 @@ public class NewProduct extends javax.swing.JFrame {
         });
 
         ldesc.setColumns(20);
+        ldesc.setLineWrap(true);
         ldesc.setRows(5);
         jScrollPane2.setViewportView(ldesc);
 

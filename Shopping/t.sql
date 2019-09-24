@@ -29,3 +29,6 @@ create table orders(ono int primary key auto_increment,cid int references custom
 create table order_deets(ono int references orders, pid int references products,qty int,
 primary key(ono,pid));
 create table pending_orders(sid int references staff.id,ono int references orders);
+
+create table cart(cid int references customers,pid int references products, qty int,
+primary key(cid,pid));

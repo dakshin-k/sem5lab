@@ -73,7 +73,7 @@ public class NewStaff extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Canel");
+        jButton2.setText("Cancel");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

@@ -93,7 +93,12 @@ public class HomePage extends javax.swing.JFrame {
         TitleLabel.setForeground(new java.awt.Color(255, 255, 255));
         TitleLabel.setText("BuyOnline");
 
-        jButton1.setText("My Account");
+        jButton1.setText("My Cart");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         welcome.setForeground(new java.awt.Color(255, 255, 255));
         welcome.setText("Welcome, {username}");
@@ -102,21 +107,18 @@ public class HomePage extends javax.swing.JFrame {
         jLabel2.setText("Recommended For You:");
 
         i1.setBackground(new java.awt.Color(255, 255, 255));
-        i1.setText("Icon 1");
         i1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 i1MouseClicked(evt);
             }
         });
 
-        i2.setText("jLabel4");
         i2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 i2MouseClicked(evt);
             }
         });
 
-        i3.setText("jLabel5");
         i3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 i3MouseClicked(evt);
@@ -285,6 +287,9 @@ public class HomePage extends javax.swing.JFrame {
 
     private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
         // TODO add your handling code here:
+        if(searchbar.getText().isEmpty()) return;
+        
+        new SearchResults(login,searchbar.getText()).setVisible(true);
     }//GEN-LAST:event_SearchButtonActionPerformed
 
     private void i1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_i1MouseClicked
@@ -331,6 +336,11 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         open(recommendations[2]);
     }//GEN-LAST:event_p3MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new ViewCart(login).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

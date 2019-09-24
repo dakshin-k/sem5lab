@@ -37,6 +37,7 @@ public class DataBase {
     }
     public static ResultSet select(String sql) 
     {
+        connect();
         try {
             return conn.prepareStatement(sql).executeQuery();
         } catch (SQLException ex) {
@@ -122,5 +123,11 @@ public class DataBase {
             return e.toString();
         }
     }
-   
+    public static void delete(String sql) {
+        try {
+            System.out.println(""+prepareStatement(sql).executeUpdate());
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

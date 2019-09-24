@@ -20,6 +20,7 @@ public class Login {
     private int custType;
     private int custId;
     private String name=null;
+    private Cart cart;
     public Login(String username, int id,int custType) {
         this.username = username;
         this.custType = custType;
@@ -34,6 +35,11 @@ public class Login {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        this.cart=new Cart(this);
+    }
+
+    public Cart getCart() {
+        return cart;
     }
 
     public String getUsername() {
@@ -49,5 +55,6 @@ public class Login {
     public String getName() {
         return this.name;
     }
+
     
 }

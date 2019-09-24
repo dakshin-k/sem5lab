@@ -69,4 +69,7 @@ public class Product {
     {
         return pid+" "+name;
     }
+    public boolean equals(Product p) {
+        return pid==p.getPid();
+    }
 }

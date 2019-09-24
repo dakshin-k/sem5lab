@@ -5,6 +5,8 @@
  */
 package shopping;
 
+import shopping.metadata.Login;
+
 /**
  *
  * @author Dakshin
@@ -14,9 +16,17 @@ public class ViewCart extends javax.swing.JFrame {
     /**
      * Creates new form ViewCart
      */
+    Login login;
     public ViewCart() {
         initComponents();
     }
+
+    ViewCart(Login login) {
+        this.login=login;
+        initComponents();
+        jLabel4.setText(login.getCart().getSize()+"");
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -24,65 +24,13 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel2" min="-2" pref="95" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="152" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel3" min="-2" pref="101" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel4" min="-2" pref="31" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jLabel11" alignment="0" pref="65" max="32767" attributes="0"/>
-                                  <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jLabel6" min="-2" pref="218" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel8" min="-2" pref="31" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                              <Component id="jLabel9" min="-2" pref="36" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel10" min="-2" pref="36" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="jLabel12" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton1" min="-2" pref="69" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel14" min="-2" pref="36" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                                      <Component id="jLabel15" min="-2" pref="36" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel16" min="-2" pref="36" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButton2" min="-2" pref="69" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
-              </Group>
+              <Component id="jLabel2" min="-2" pref="95" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="152" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="40" max="32767" attributes="0"/>
               <Component id="jButton6" min="-2" pref="69" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton5" min="-2" pref="69" max="-2" attributes="0"/>
@@ -91,6 +39,53 @@
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="jButton3" min="-2" pref="104" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel3" min="-2" pref="101" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" pref="31" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="i2" alignment="0" pref="65" max="32767" attributes="0"/>
+                          <Component id="i1" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="q1" min="-2" pref="31" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jLabel9" min="-2" pref="36" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="price1" min="-2" pref="67" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="n1" min="-2" pref="218" max="-2" attributes="0"/>
+                                  <Component id="n2" alignment="0" pref="233" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButton1" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="q2" min="-2" pref="36" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="jLabel15" min="-2" pref="36" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="price2" min="-2" pref="67" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButton2" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -111,30 +106,30 @@
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jLabel5" min="-2" pref="65" max="-2" attributes="0"/>
+                  <Component id="i1" min="-2" pref="65" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jLabel6" min="-2" pref="21" max="-2" attributes="0"/>
+                      <Component id="n1" min="-2" pref="21" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" max="32767" attributes="0"/>
-                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="q1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="price1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jLabel11" min="-2" pref="65" max="-2" attributes="0"/>
+                  <Component id="i2" min="-2" pref="65" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jLabel12" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="n2" min="-2" pref="24" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="q2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="price2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -179,12 +174,9 @@
         <Property name="text" type="java.lang.String" value=" {x}"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="{Icon 1}"/>
-      </Properties>
+    <Component class="javax.swing.JLabel" name="i1">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="n1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Name 1"/>
       </Properties>
@@ -194,7 +186,7 @@
         <Property name="text" type="java.lang.String" value="Quantity :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
+    <Component class="javax.swing.JLabel" name="q1">
       <Properties>
         <Property name="text" type="java.lang.String" value="{x}"/>
       </Properties>
@@ -204,17 +196,14 @@
         <Property name="text" type="java.lang.String" value="Price :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel10">
+    <Component class="javax.swing.JLabel" name="price1">
       <Properties>
         <Property name="text" type="java.lang.String" value="{y}"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel11">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="{Icon 2}"/>
-      </Properties>
+    <Component class="javax.swing.JLabel" name="i2">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel12">
+    <Component class="javax.swing.JLabel" name="n2">
       <Properties>
         <Property name="text" type="java.lang.String" value="{Name 2}"/>
       </Properties>
@@ -224,7 +213,7 @@
         <Property name="text" type="java.lang.String" value="Quantity :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel14">
+    <Component class="javax.swing.JLabel" name="q2">
       <Properties>
         <Property name="text" type="java.lang.String" value="{x}"/>
       </Properties>
@@ -234,7 +223,7 @@
         <Property name="text" type="java.lang.String" value="Price :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel16">
+    <Component class="javax.swing.JLabel" name="price2">
       <Properties>
         <Property name="text" type="java.lang.String" value="{y}"/>
       </Properties>
@@ -243,31 +232,49 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Remove"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Remove"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Place Order"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>
         <Property name="text" type="java.lang.String" value="Next"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton5">
       <Properties>
         <Property name="text" type="java.lang.String" value="Prev"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton6">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancel"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

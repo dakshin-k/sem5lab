@@ -74,9 +74,9 @@
                               <Component id="jRadioButton3" min="-2" pref="87" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel8" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="stot" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tx" alignment="0" max="32767" attributes="0"/>
+                              <Component id="total" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -104,17 +104,17 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="stot" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tx" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="total" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -162,17 +162,17 @@
         <Property name="text" type="java.lang.String" value="Total           :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="stot">
       <Properties>
         <Property name="text" type="java.lang.String" value="{x}"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="tx">
       <Properties>
         <Property name="text" type="java.lang.String" value="{y}"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
+    <Component class="javax.swing.JLabel" name="total">
       <Properties>
         <Property name="text" type="java.lang.String" value="{z}"/>
       </Properties>
@@ -255,9 +255,9 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField3" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
-                                  <Component id="jTextField2" max="32767" attributes="0"/>
-                                  <Component id="jTextField1" alignment="0" pref="166" max="32767" attributes="0"/>
+                                  <Component id="cvv" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="cno" max="32767" attributes="0"/>
+                                  <Component id="cname" alignment="0" pref="166" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -275,17 +275,17 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cname" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cno" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cvv" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -314,14 +314,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Make Payment"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="cname">
+            </Component>
+            <Component class="javax.swing.JTextField" name="cno">
+            </Component>
+            <Component class="javax.swing.JTextField" name="cvv">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cvvActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -347,7 +350,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jButton2" min="-2" pref="108" max="-2" attributes="0"/>
-                          <Component id="jTextField4" min="-2" pref="149" max="-2" attributes="0"/>
+                          <Component id="upi" min="-2" pref="149" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="61" max="32767" attributes="0"/>
                   </Group>
@@ -359,7 +362,7 @@
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel14" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="upi" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
@@ -374,12 +377,15 @@
                 <Property name="text" type="java.lang.String" value="Enter UPI ID :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField4">
+            <Component class="javax.swing.JTextField" name="upi">
             </Component>
             <Component class="javax.swing.JButton" name="jButton2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Make Payment"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -420,6 +426,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Continue"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

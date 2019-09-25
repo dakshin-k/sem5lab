@@ -16,8 +16,8 @@ import shopping.DataBase;
  * @author Dakshin
  */
 public class CartItem {
-    Product prod;
-    int qty;
+    private Product prod;
+    private int qty;
 
     public CartItem(Product prof, int qty) {
         this.prod = prof;
@@ -44,5 +44,9 @@ public class CartItem {
 
     public void setQty(int qty) {
         this.qty = qty;
+    }
+    public boolean equals(Product i)
+    {
+        return prod.equals(i);
     }
 }

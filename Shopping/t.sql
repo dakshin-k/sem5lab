@@ -17,7 +17,7 @@ name varchar(20),city varchar(20));
 
 create table products(pid int auto_increment primary key,
 name varchar(30),imgpath varchar(255),sdesc varchar(300),
-ldesc varchar(500),price decimal(7,2) not null);
+ldesc varchar(500),price decimal(9,2) not null);
 
 create table inventory(pid int primary key references products,
 qty int check(qty>=0));
@@ -32,3 +32,6 @@ create table pending_orders(sid int references staff.id,ono int references order
 
 create table cart(cid int references customers,pid int references products, qty int,
 primary key(cid,pid));
+
+create table pending_order_no(sid int references staff,n int);
+

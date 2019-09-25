@@ -125,7 +125,7 @@ public class DataBase {
     }
     public static void delete(String sql) {
         try {
-            System.out.println(""+prepareStatement(sql).executeUpdate());
+            prepareStatement(sql).executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
         }

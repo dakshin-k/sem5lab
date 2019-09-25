@@ -187,6 +187,7 @@ public class NewStaff extends javax.swing.JFrame {
         }
         insert="insert into staff values(?,?,?)";
         DataBase.insert(insert,cid,name.getText(),city.getText());
+        DataBase.insert("insert into pending_order_no values(?,?)", cid,"0");
         JOptionPane.showMessageDialog(null, "Records updated.");
     }//GEN-LAST:event_submitActionPerformed
 

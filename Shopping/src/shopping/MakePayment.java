@@ -6,6 +6,8 @@
 package shopping;
 
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import shopping.metadata.Login;
 
 /**
  *
@@ -18,6 +20,19 @@ public class MakePayment extends javax.swing.JFrame {
      */
     public MakePayment() {
         initComponents();
+    }
+    private Login login;
+    private float ttal;
+    private String ono;
+    MakePayment(Login login) {
+        this.login=login;
+        initComponents();
+        float stotal=login.getCart().getTotal();
+        float tax=stotal*0.2f;
+        ttal=stotal+tax;
+        stot.setText("Rs. "+String.valueOf(stotal));
+        tx.setText("Rs. "+String.valueOf(tax));
+        total.setText("Rs. "+ttal);
     }
 
     /**
@@ -41,9 +56,9 @@ public class MakePayment extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        stot = new javax.swing.JLabel();
+        tx = new javax.swing.JLabel();
+        total = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
@@ -54,12 +69,12 @@ public class MakePayment extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        cname = new javax.swing.JTextField();
+        cno = new javax.swing.JTextField();
+        cvv = new javax.swing.JTextField();
         UPIPanel = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        upi = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         CODPanel = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
@@ -83,11 +98,11 @@ public class MakePayment extends javax.swing.JFrame {
 
         jLabel5.setText("Total           :");
 
-        jLabel6.setText("{x}");
+        stot.setText("{x}");
 
-        jLabel7.setText("{y}");
+        tx.setText("{y}");
 
-        jLabel8.setText("{z}");
+        total.setText("{z}");
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Cash on Delivery");
@@ -135,10 +150,15 @@ public class MakePayment extends javax.swing.JFrame {
         jLabel13.setText("CVV                      :");
 
         jButton1.setText("Make Payment");
-
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        cvv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cvvActionPerformed(evt);
             }
         });
 
@@ -156,9 +176,9 @@ public class MakePayment extends javax.swing.JFrame {
                             .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(CardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)))
+                            .addComponent(cvv, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cno)
+                            .addComponent(cname, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)))
                     .addGroup(CardPanelLayout.createSequentialGroup()
                         .addGap(112, 112, 112)
                         .addComponent(jButton1)))
@@ -170,15 +190,15 @@ public class MakePayment extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(CardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(CardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(CardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cvv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -191,6 +211,11 @@ public class MakePayment extends javax.swing.JFrame {
         jLabel14.setText("Enter UPI ID :");
 
         jButton2.setText("Make Payment");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout UPIPanelLayout = new javax.swing.GroupLayout(UPIPanel);
         UPIPanel.setLayout(UPIPanelLayout);
@@ -202,7 +227,7 @@ public class MakePayment extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(UPIPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(upi, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
         UPIPanelLayout.setVerticalGroup(
@@ -211,7 +236,7 @@ public class MakePayment extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(UPIPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(upi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(jButton2)
                 .addContainerGap(35, Short.MAX_VALUE))
@@ -222,6 +247,11 @@ public class MakePayment extends javax.swing.JFrame {
         CODPanel.setPreferredSize(new java.awt.Dimension(324, 128));
 
         jButton3.setText("Continue");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CODPanelLayout = new javax.swing.GroupLayout(CODPanel);
         CODPanel.setLayout(CODPanelLayout);
@@ -269,9 +299,9 @@ public class MakePayment extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(stot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tx, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -290,15 +320,15 @@ public class MakePayment extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel6))
+                    .addComponent(stot))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel7))
+                    .addComponent(tx))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel8))
+                    .addComponent(total))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton1)
@@ -312,9 +342,9 @@ public class MakePayment extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void cvvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvvActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_cvvActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
@@ -333,6 +363,40 @@ public class MakePayment extends javax.swing.JFrame {
         CardLayout card=(CardLayout) jPanel2.getLayout();
         card.show(jPanel2,"UPIPanel");
     }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(cno.getText().length()!=16 || cvv.getText().length()!=3)
+            JOptionPane.showMessageDialog(null, "Check your card details");
+        else
+        {
+            ono=login.getCart().placeOrder();
+            JOptionPane.showMessageDialog(null, "Your order has been placed.");
+            new Receipt(ono,ttal).setVisible(true);
+            dispose();
+        }    
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if(upi.getText().split("@").length!=2)
+            JOptionPane.showMessageDialog(null, "Invalid UPI id.");
+        else
+        {
+            ono=login.getCart().placeOrder();
+            JOptionPane.showMessageDialog(null, "Your order has been placed.");
+            new Receipt(ono,ttal).setVisible(true);
+            dispose();
+        }    
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        ono=login.getCart().placeOrder();
+        JOptionPane.showMessageDialog(null, "Your order has been placed.");
+        new Receipt(ono,ttal).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -378,6 +442,9 @@ public class MakePayment extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.JTextField cname;
+    private javax.swing.JTextField cno;
+    private javax.swing.JTextField cvv;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -391,18 +458,15 @@ public class MakePayment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel stot;
+    private javax.swing.JLabel total;
+    private javax.swing.JLabel tx;
+    private javax.swing.JTextField upi;
     // End of variables declaration//GEN-END:variables
 }

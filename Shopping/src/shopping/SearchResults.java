@@ -329,7 +329,7 @@ public class SearchResults extends javax.swing.JFrame {
 
     private void cartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartMouseClicked
         // TODO add your handling code here:
-        new ViewCart(login).setVisible(true);
+        new ViewCart(login);
     }//GEN-LAST:event_cartMouseClicked
 
     /**

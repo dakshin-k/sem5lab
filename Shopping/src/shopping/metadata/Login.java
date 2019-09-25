@@ -35,6 +35,16 @@ public class Login {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        else if (custType==1)
+        {
+            ResultSet rs=DataBase.select("select name from staff where id = ?",String.valueOf(custId));
+            try {
+                rs.next();
+                this.name=rs.getNString(1);
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         this.cart=new Cart(this);
     }
 

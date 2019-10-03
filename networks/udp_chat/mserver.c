@@ -29,7 +29,7 @@ void* recvthread(void *p)
 			cl1=cliaddr;
 			f1=1;
 		}
-		if(f2==0)
+		if(f2==0&&!equals(cl1,cliaddr))
 		{
 			cl2=cliaddr;
 			f2=1;
